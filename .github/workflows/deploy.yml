@@ -32,6 +32,6 @@ jobs:
         push: true
         tags: |
           jimmyho/python:3.14.0
-          jimmyho/python:3.14.0-${{ github.sha:0:7 }}
+          jimmyho/python:3.14.0-${ GITHUB_SHA::7 }
           jimmyho/python:3.14.0-${{ env.CURRENT_DATE }}
           jimmyho/python:latest
