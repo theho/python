@@ -35,6 +35,6 @@ jobs:
         push: true
         tags: |
           jimmyho/python:3.14.0
-          jimmyho/python:3.14.0-${ env.SHORT_SHA }}
+          jimmyho/python:3.14.0-${{ env.SHORT_SHA }}
           jimmyho/python:3.14.0-${{ env.CURRENT_DATE }}
           jimmyho/python:latest
