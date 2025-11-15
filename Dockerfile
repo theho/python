@@ -34,4 +34,6 @@ RUN cargo --version
 RUN pipx install uv
 RUN pipx install ruff
 
-RUN useradd -m -s /bin/bash -G sudo coder
+# Create coder user with sudo privileges and zsh as default shell
+RUN useradd -m -s /bin/zsh -G sudo coder
+USER coder
