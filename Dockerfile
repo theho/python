@@ -19,10 +19,9 @@ RUN apt-get install -y zsh && \
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Create a basic .zshrc in /etc/skel
-RUN echo "export EDITOR=vim" > /etc/skel/.zshrc && \
-    echo "source ~/.oh-my-zsh/oh-my-zsh.sh" >> /etc/skel/.zshrc # If using Oh My Zsh
+RUN echo "export EDITOR=vim" > /etc/skel/.zshrc
 # Set Zsh as the default shell for new users
-RUN echo "SHELL=/bin/zsh" >> /etc/default/useradd # or similar for your base image
+RUN echo "SHELL=/bin/zsh" >> /etc/default/useradd
 
 # Instal Rust
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
