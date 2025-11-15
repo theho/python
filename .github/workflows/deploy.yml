@@ -15,6 +15,9 @@ jobs:
       run: |
         echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
+    - name: Add SHORT_SHA env property with commit short sha
+      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+
     - name: Checkout
       uses: actions/checkout@v4
             
@@ -32,6 +35,6 @@ jobs:
         push: true
         tags: |
           jimmyho/python:3.14.0
-          jimmyho/python:3.14.0-${ GITHUB_SHA::7 }
+          jimmyho/python:3.14.0-${ env.SHORT_SHA }}
           jimmyho/python:3.14.0-${{ env.CURRENT_DATE }}
           jimmyho/python:latest
