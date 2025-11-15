@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Put current date into a variable
+      run: |
+        echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
     - name: Checkout
       uses: actions/checkout@v4
             
@@ -27,6 +31,7 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          jimmyho/python:3.14.0-${{ github.sha }}
-          jimmyho/python:3.14.0-${{ steps.date.outputs.date }}
+          jimmyho/python:3.14.0
+          jimmyho/python:3.14.0-${{ github.sha:0:7 }}
+          jimmyho/python:3.14.0-${{ env.CURRENT_DATE }}
           jimmyho/python:latest
